@@ -1,0 +1,6 @@
+# Render.com blueprint - deploy at https://dashboard.render.com
+services:
+  - type: web
+    name: student-predict
+    runtime: docker
+    # Or use: runtime: python, buildCommand: pip install -r requirements.txt, startCommand: python predict_app.py

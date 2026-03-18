@@ -1,0 +1,24 @@
+# Ignore dev / build artifacts
+__pycache__
+*.pyc
+.ipynb_checkpoints
+*.ipynb
+.git
+.gitignore
+*.md
+.DS_Store
+
+# Source data (not needed at runtime)
+student-mat.csv
+student-por.csv
+*.R
+
+# Scripts (only predict_app runs in container)
+run.sh
+run_all.py
+run_pipeline.py
+predict.py
+serve.py
+create_pdf_presentation*.py
+new_data_sample.csv
+student.txt

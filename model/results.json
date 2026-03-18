@@ -1,0 +1,15 @@
+{
+  "best_model": "Random Forest",
+  "best_accuracy": 0.4557,
+  "model_comparison": [
+    {
+      "name": "Logistic Regression",
+      "accuracy": 0.4051
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 0.4557
+    }
+  ],
+  "test_samples": 79
+}

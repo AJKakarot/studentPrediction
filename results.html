@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Performance - Results</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --success: #4ade80;
+      --border: #334155;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -2px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.25), 0 4px 6px -4px rgba(0,0,0,0.2); }
+    .card h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .metrics { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .metric {
+      background: rgba(56, 189, 248, 0.1);
+      padding: 1.25rem 1.5rem;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 140px;
+      border: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .metric:hover { background: rgba(56, 189, 248, 0.15); }
+    .metric-value { font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+    .metric-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .cm-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.9rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .cm-table th, .cm-table td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.85rem;
+      text-align: center;
+    }
+    .cm-table th { background: rgba(56, 189, 248, 0.15); font-weight: 600; color: var(--accent); }
+    .cm-table tbody tr:hover td { background: rgba(56, 189, 248, 0.08); }
+    .cm-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    }
+    .model-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .model-row:hover { background: rgba(255,255,255,0.03); }
+    .model-row:last-child { border-bottom: none; }
+    .best { color: var(--success); font-weight: 700; }
+    .best::after { content: ' ★'; font-size: 0.8em; }
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      .metrics { flex-direction: column; }
+      .metric { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Performance Prediction</h1>
+    <p class="subtitle">ML Results • UCI Dataset</p>
+
+    <div class="card">
+      <h2>Accuracy Summary</h2>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-value">45.57%</div>
+          <div class="metric-label">Best Model Accuracy</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">Random Forest</div>
+          <div class="metric-label">Best Model</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">79</div>
+          <div class="metric-label">Test Samples</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Model Comparison</h2>
+      <div class="model-row"><span>Logistic Regression</span><span class="">40.51%</span></div><div class="model-row"><span>Random Forest</span><span class="best">45.57%</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Confusion Matrix (Random Forest)</h2>
+      <p>True vs Predicted labels (Fail, Pass, Good, Excellent)</p>
+      <table class="cm-table"><thead><tr><th></th><th>Excellent</th><th>Fail</th><th>Good</th><th>Pass</th></tr></thead><tbody><tr><td><b>Excellent</b></td><td>0</td><td>0</td><td>2</td><td>3</td></tr><tr><td><b>Fail</b></td><td>0</td><td>14</td><td>0</td><td>12</td></tr><tr><td><b>Good</b></td><td>0</td><td>3</td><td>1</td><td>11</td></tr><tr><td><b>Pass</b></td><td>0</td><td>8</td><td>4</td><td>21</td></tr></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2>Confusion Matrix Plot</h2>
+      <img src="model/confusion_matrix.png" alt="Confusion Matrix" width="560">
+    </div>
+  </div>
+</body>
+</html>
