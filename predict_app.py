@@ -170,8 +170,10 @@ def serve_model(filename):
     """Serve files from model/ (e.g. confusion_matrix.png)."""
     return send_from_directory("model", filename)
 
+# Load model at startup (needed for gunicorn; also used when run as script)
+load_model()
+
 if __name__ == "__main__":
-    load_model()
     port = int(os.environ.get("PORT", 5001))  # Cloud platforms set PORT
     print(f"Predict app at http://localhost:{port}")
     app.run(host="0.0.0.0", port=port, debug=False)

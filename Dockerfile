@@ -14,6 +14,6 @@ COPY results.html .
 
 EXPOSE 5001
 
-# Cloud platforms set PORT; default 5001 for local
+# Render sets PORT at runtime; gunicorn needed for production
 ENV PORT=5001
-CMD ["python", "predict_app.py"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5001} --workers 1 predict_app:app"]
